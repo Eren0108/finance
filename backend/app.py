@@ -88,8 +88,10 @@ def create_app():
     return app
 
 
+# Module-level app instance for production WSGI servers (e.g. Gunicorn)
+app = create_app()
+
 if __name__ == "__main__":
-    app = create_app()
     port = int(os.environ.get("PORT", 5000))
     print(f"[SERVER] Finance Tracker Server running at: http://localhost:{port}")
     app.run(host="0.0.0.0", port=port, debug=True)
